@@ -1,4 +1,4 @@
-// Copyright (c) 2010-2011, Nate Stedman <natesm@gmail.com>
+// Copyright (c) 2011, Nate Stedman <natesm@gmail.com>
 //
 // Permission to use, copy, modify, and/or distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,24 +12,49 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-#import "IUStatusItem.h"
-#import "IUDropView.h"
+#import "IUImageBrowserItem.h"
 #import "IUAppDelegate.h"
 
-@implementation IUStatusItem
+@implementation IUImageBrowserItem
 
--(id)initWithView:(IUDropView*)dropView menu:(NSMenu*)menu
+@synthesize url;
+
+-(id)initWithDict:(NSDictionary*)dict
 {
-    self = [[[NSStatusBar systemStatusBar]
-             statusItemWithLength:SIZE] retain];
+    self = [super init];
     if (self)
     {
-        [self setMenu:menu];
-        [self setView:dropView];
-        [dropView setItem:self];
+        path = [[NSApp delegate] imagePath:[dict valueForKey:FILE_KEY]];
+        title = [dict valueForKey:FILE_KEY];
+        subtitle = [dict valueForKey:URL_KEY];
+        url = [NSURL URLWithString:subtitle];
     }
-    
     return self;
+}
+
+-(NSString*)imageUID
+{
+    return title;
+}
+
+-(NSString*)imageRepresentationType
+{
+    return IKImageBrowserPathRepresentationType;
+}
+
+-(id)imageRepresentation
+{
+    return path;
+}
+
+-(NSString*)imageTitle
+{
+    return title;
+}
+
+-(NSString*)imageSubtitle
+{
+    return subtitle;
 }
 
 @end

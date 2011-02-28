@@ -1,4 +1,4 @@
-// Copyright (c) 2010, Nate Stedman <natesm@gmail.com>
+// Copyright (c) 2010-2011, Nate Stedman <natesm@gmail.com>
 //
 // Permission to use, copy, modify, and/or distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -14,6 +14,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IUDropView.h"
+#import "IUWindowController.h"
 
 @interface IUAppDelegate : NSObject <NSApplicationDelegate>
 {
@@ -22,13 +23,17 @@
     IBOutlet NSMenu* menu;
     IBOutlet NSMenuItem* recentUploads;
     NSMutableArray* history;
+    
+    IUWindowController* allUploads;
 }
 
 @property (readonly) NSArray* history;
 @property (readonly) NSMenuItem* recentUploads;
+@property (readwrite, assign) IUWindowController* allUploads;
 
 -(IBAction)onPreferences:(NSMenuItem*)sender;
 -(IBAction)onUploadClipboard:(NSMenuItem *)sender;
+-(IBAction)onAllUploads:(NSMenuItem*)sender;
 -(IBAction)onQuit:(NSMenuItem*)sender;
 
 -(void)addImage:(NSString*)file withImgurUrl:(NSString*)url;

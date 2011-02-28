@@ -1,4 +1,4 @@
-// Copyright (c) 2010-2011, Nate Stedman <natesm@gmail.com>
+// Copyright (c) 2011, Nate Stedman <natesm@gmail.com>
 //
 // Permission to use, copy, modify, and/or distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -13,13 +13,18 @@
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #import <Cocoa/Cocoa.h>
+#import <Quartz/Quartz.h>
 
-@class IUDropView;
-    
-@interface IUStatusItem : NSStatusItem
+@interface IUImageBrowserItem : NSObject
 {
+    NSString* path;
+    NSString* title;
+    NSString* subtitle;
+    NSURL* url;
 }
 
--(id)initWithView:(IUDropView*)dropView menu:(NSMenu*)menu;
+@property (readonly) NSURL* url;
+
+-(id)initWithDict:(NSDictionary*)dict;
 
 @end

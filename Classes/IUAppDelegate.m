@@ -1,4 +1,4 @@
-// Copyright (c) 2010, Nate Stedman <natesm@gmail.com>
+// Copyright (c) 2010-2011, Nate Stedman <natesm@gmail.com>
 //
 // Permission to use, copy, modify, and/or distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -33,6 +33,7 @@
 
 @synthesize history;
 @synthesize recentUploads;
+@synthesize allUploads;
 
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -56,8 +57,17 @@
     }
 }
 
--(IBAction)onPreferences:(NSMenuItem *)sender
+-(IBAction)onPreferences:(NSMenuItem*)sender
 {    
+}
+
+-(IBAction)onAllUploads:(NSMenuItem*)sender
+{
+    if (!allUploads)
+    {
+        allUploads = [[IUWindowController alloc] initWithImages:history];
+    }
+    [[allUploads window] makeKeyAndOrderFront:self];
 }
 
 -(IBAction)onUploadClipboard:(NSMenuItem *)sender
