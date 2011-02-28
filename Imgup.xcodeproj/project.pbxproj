@@ -23,6 +23,9 @@
 		43D84154121B3F4B007AB813 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 43D84152121B3F4B007AB813 /* Credits.rtf */; };
 		43D84157121B3F4B007AB813 /* IUAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D84156121B3F4B007AB813 /* IUAppDelegate.m */; };
 		43D84165121B4379007AB813 /* Imgup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43D84164121B4379007AB813 /* Imgup.xib */; };
+		43DD07F4131B3318000A8BE6 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43DD07F3131B3318000A8BE6 /* Sparkle.framework */; };
+		43DD07F7131B331A000A8BE6 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 43DD07F3131B3318000A8BE6 /* Sparkle.framework */; };
+		43DD080E131B34A6000A8BE6 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 43DD080D131B34A6000A8BE6 /* dsa_pub.pem */; };
 		43E73F3E121B48C70039D8AB /* IUDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E73F3D121B48C70039D8AB /* IUDropView.m */; };
 		43E73FE9121B60C50039D8AB /* IUStatusItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E73FE8121B60C50039D8AB /* IUStatusItem.m */; };
 		43E74031121B64740039D8AB /* IUUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E74030121B64740039D8AB /* IUUpload.m */; };
@@ -36,6 +39,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				43DD07F7131B331A000A8BE6 /* Sparkle.framework in Copy Frameworks */,
 				4336C958121C2E3100090284 /* Growl.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -66,6 +70,8 @@
 		43D84155121B3F4B007AB813 /* IUAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IUAppDelegate.h; sourceTree = "<group>"; };
 		43D84156121B3F4B007AB813 /* IUAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IUAppDelegate.m; sourceTree = "<group>"; };
 		43D84164121B4379007AB813 /* Imgup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Imgup.xib; path = xib/Imgup.xib; sourceTree = "<group>"; };
+		43DD07F3131B3318000A8BE6 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
+		43DD080D131B34A6000A8BE6 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Resources/dsa_pub.pem; sourceTree = "<group>"; };
 		43E73F3C121B48C70039D8AB /* IUDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUDropView.h; sourceTree = "<group>"; };
 		43E73F3D121B48C70039D8AB /* IUDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUDropView.m; sourceTree = "<group>"; };
 		43E73FE7121B60C50039D8AB /* IUStatusItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUStatusItem.h; sourceTree = "<group>"; };
@@ -85,6 +91,7 @@
 				4336C954121C2E2200090284 /* Growl.framework in Frameworks */,
 				431E6D7D121C93490050229D /* Carbon.framework in Frameworks */,
 				433D86BD131AB87F00797D5A /* Quartz.framework in Frameworks */,
+				43DD07F4131B3318000A8BE6 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +144,7 @@
 		43D8413D121B3F4B007AB813 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				43DD080D131B34A6000A8BE6 /* dsa_pub.pem */,
 				4336C971121C2F9D00090284 /* Growl Registration Ticket.growlRegDict */,
 				4336C937121C2C9400090284 /* Icon.icns */,
 				4336C922121C213800090284 /* MenuBarIcon.png */,
@@ -155,6 +163,7 @@
 				4336C953121C2E2200090284 /* Growl.framework */,
 				431E6D7C121C93490050229D /* Carbon.framework */,
 				433D86BC131AB87F00797D5A /* Quartz.framework */,
+				43DD07F3131B3318000A8BE6 /* Sparkle.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -223,6 +232,7 @@
 				4336C938121C2C9400090284 /* Icon.icns in Resources */,
 				4336C972121C2F9D00090284 /* Growl Registration Ticket.growlRegDict in Resources */,
 				433D86A1131AB1F800797D5A /* Window.xib in Resources */,
+				43DD080E131B34A6000A8BE6 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +305,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Frameworks",
+					"\"$(SRCROOT)/External\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_ENABLE_OBJC_GC = required;
@@ -316,7 +329,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Frameworks",
+					"\"$(SRCROOT)/External\"",
+				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_ENABLE_OBJC_GC = required;
 				GCC_MODEL_TUNING = G5;

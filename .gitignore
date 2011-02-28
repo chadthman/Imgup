@@ -12,3 +12,4 @@ profile
 *.pyc
 *.ai
 *.psd
+dsa_priv.pem
