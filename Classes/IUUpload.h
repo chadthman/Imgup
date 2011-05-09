@@ -14,14 +14,20 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class IUUpload;
+
+typedef void (^IUUploadCompleteBlock)(IUUpload*);
 
 @interface IUUpload : NSOperation
 {
     NSArray* files;
     bool reddit;
+    IUUploadCompleteBlock block;
 }
 
 @property (readwrite, assign) NSArray* files;
 @property (readwrite, assign) bool reddit;
+
+-(id)initWithBlock:(IUUploadCompleteBlock)block;
 
 @end

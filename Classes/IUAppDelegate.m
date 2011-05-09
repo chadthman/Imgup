@@ -37,6 +37,9 @@
 
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    // random seed
+    srand(time(NULL));
+    
 #warning Growl will not work if app delegate is nil
     [GrowlApplicationBridge setGrowlDelegate:nil];
     
@@ -55,6 +58,21 @@
     else {
         history = [[NSMutableArray alloc] init];
     }
+    
+    // register global hotkeys
+    hotkeyCenter = [[DDHotKeyCenter alloc] init];
+    [hotkeyCenter registerHotKeyWithKeyCode:20
+                              modifierFlags:NSAlternateKeyMask | NSCommandKeyMask | NSShiftKeyMask
+                                     target:self
+                                     action:@selector(uploadScreenshot:)
+                                     object:nil];
+    
+    hotkeyCenter = [[DDHotKeyCenter alloc] init];
+    [hotkeyCenter registerHotKeyWithKeyCode:21
+                              modifierFlags:NSAlternateKeyMask | NSCommandKeyMask | NSShiftKeyMask
+                                     target:self
+                                     action:@selector(uploadSnippedScreenshot:)
+                                     object:nil];
 }
 
 -(IBAction)onPreferences:(NSMenuItem*)sender
@@ -84,6 +102,44 @@
 -(IBAction)onQuit:(NSMenuItem *)sender
 {
     [NSApp terminate:nil];
+}
+
+-(void)uploadScreenshot:(NSEvent*)event
+{
+    [self uploadScreenshotWithArguments:[NSArray array]];
+}
+
+-(void)uploadSnippedScreenshot:(NSEvent*)event
+{
+    [self uploadScreenshotWithArguments:[NSArray arrayWithObject:@"-i"]];
+}
+
+-(void)uploadScreenshotWithArguments:(NSArray*)arguments
+{
+    NSString* filename;
+    do
+    {
+        filename = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"%i", rand()]];
+    } while ([[NSFileManager defaultManager] fileExistsAtPath:filename]);
+    
+    NSTask* task = [NSTask launchedTaskWithLaunchPath:@"/usr/sbin/screencapture"
+                                            arguments:[arguments arrayByAddingObject:filename]];
+    [task waitUntilExit];
+    
+    // upload the file
+    IUUpload* upload = [[IUUpload alloc] initWithBlock:^(IUUpload* ul) {
+        NSFileManager* fm = [NSFileManager defaultManager];
+        for (NSString* file in [ul files])
+        {
+            NSError* error = nil;
+            [fm removeItemAtPath:file error:&error];
+            if (error) [NSApp presentError:error];
+        }
+    }];
+    
+    [upload setFiles:[NSArray arrayWithObject:filename]];
+    [[dropView uploads] addOperation:upload];
+    [dropView uploadStarted];
 }
 
 -(void)addImage:(NSString*)file withImgurUrl:(NSString*)url

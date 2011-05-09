@@ -13,6 +13,7 @@
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #import <Cocoa/Cocoa.h>
+#import "DDHotKeyCenter.h"
 #import "IUDropView.h"
 #import "IUWindowController.h"
 
@@ -23,6 +24,8 @@
     IBOutlet NSMenu* menu;
     IBOutlet NSMenuItem* recentUploads;
     NSMutableArray* history;
+    
+    DDHotKeyCenter* hotkeyCenter;
     
     IUWindowController* allUploads;
 }
@@ -39,6 +42,10 @@
 -(void)addImage:(NSString*)file withImgurUrl:(NSString*)url;
 -(NSString *)applicationSupportDirectory;
 -(NSString*)imagePath:(NSString*)filename;
+
+-(void)uploadScreenshot:(NSEvent*)event;
+-(void)uploadSnippedScreenshot:(NSEvent*)event;
+-(void)uploadScreenshotWithArguments:(NSArray*)arguments;
 
 @end
 

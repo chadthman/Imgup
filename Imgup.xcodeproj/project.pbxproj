@@ -18,6 +18,7 @@
 		433D86A5131AB2D100797D5A /* IUScrollbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 433D86A4131AB2D100797D5A /* IUScrollbar.m */; };
 		433D86A8131AB69900797D5A /* IUImageBrowserItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 433D86A7131AB69900797D5A /* IUImageBrowserItem.m */; };
 		433D86BD131AB87F00797D5A /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433D86BC131AB87F00797D5A /* Quartz.framework */; };
+		436701631377CED00029067D /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 436701621377CED00029067D /* DDHotKeyCenter.m */; };
 		43D84147121B3F4B007AB813 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D84146121B3F4B007AB813 /* Cocoa.framework */; };
 		43D8414E121B3F4B007AB813 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D8414D121B3F4B007AB813 /* main.m */; };
 		43D84154121B3F4B007AB813 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 43D84152121B3F4B007AB813 /* Credits.rtf */; };
@@ -61,6 +62,8 @@
 		433D86A6131AB69900797D5A /* IUImageBrowserItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUImageBrowserItem.h; sourceTree = "<group>"; };
 		433D86A7131AB69900797D5A /* IUImageBrowserItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUImageBrowserItem.m; sourceTree = "<group>"; };
 		433D86BC131AB87F00797D5A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		436701611377CED00029067D /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyCenter.h; path = Classes/DDHotKeyCenter.h; sourceTree = "<group>"; };
+		436701621377CED00029067D /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyCenter.m; path = Classes/DDHotKeyCenter.m; sourceTree = "<group>"; };
 		43D84143121B3F4B007AB813 /* Imgup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Imgup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43D84146121B3F4B007AB813 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		43D84148121B3F4B007AB813 /* Imgup-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Imgup-Info.plist"; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 		43D8413C121B3F4B007AB813 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				436701611377CED00029067D /* DDHotKeyCenter.h */,
+				436701621377CED00029067D /* DDHotKeyCenter.m */,
 				B79C048D12E5FC18007A2214 /* NSDataBase64.h */,
 				B79C048E12E5FC18007A2214 /* NSDataBase64.m */,
 				43D84149121B3F4B007AB813 /* Imgup_Prefix.pch */,
@@ -207,6 +212,7 @@
 			};
 			buildConfigurationList = 43D84139121B3F4A007AB813 /* Build configuration list for PBXProject "Imgup" */;
 			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -252,6 +258,7 @@
 				433D869F131AB1A100797D5A /* IUWindowController.m in Sources */,
 				433D86A5131AB2D100797D5A /* IUScrollbar.m in Sources */,
 				433D86A8131AB69900797D5A /* IUImageBrowserItem.m in Sources */,
+				436701631377CED00029067D /* DDHotKeyCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

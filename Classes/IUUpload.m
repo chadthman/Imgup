@@ -29,6 +29,16 @@
 @synthesize files;
 @synthesize reddit;
 
+-(id)initWithBlock:(IUUploadCompleteBlock)blk
+{
+    self = [super init];
+    if (self)
+    {
+        block = Block_copy(blk);
+    }
+    return self;
+}
+
 -(NSURL *)uploadURL
 {
     return [NSURL URLWithString:@"http://api.imgur.com/2/upload.xml"];
@@ -133,6 +143,11 @@
         [lock lock];
         [[NSApp delegate] addImage:file withImgurUrl:url];
         [lock unlock];
+        
+        if (block)
+        {
+            block(self);
+        }
     }
     
     [pool release];
