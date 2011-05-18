@@ -22,10 +22,13 @@
 {
     self = [[[NSStatusBar systemStatusBar]
              statusItemWithLength:SIZE] retain];
+    
     if (self)
     {
+        [self setHighlightMode:YES];
         [self setMenu:menu];
         [self setView:dropView];
+
         [dropView setItem:self];
     }
     

@@ -12,7 +12,6 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-#import <Growl/Growl.h>
 #import "IUAppDelegate.h"
 #import "IUStatusItem.h"
 #import "IUDropView.h"
@@ -40,8 +39,7 @@
     // random seed
     srand(time(NULL));
     
-#warning Growl will not work if app delegate is nil
-    [GrowlApplicationBridge setGrowlDelegate:nil];
+    [GrowlApplicationBridge setGrowlDelegate:self];
     
     // create a drop view
     dropView = [[IUDropView alloc] initWithFrame:
@@ -218,6 +216,11 @@
     }
     
     return [NSString stringWithFormat:@"%@%@", path, filename];
+}
+
+-(void)growlNotificationWasClicked:(id)clickContext
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[clickContext objectForKey:@"URL"]]];
 }
 
 @end

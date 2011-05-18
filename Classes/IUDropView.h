@@ -15,13 +15,14 @@
 #import <Cocoa/Cocoa.h>
 #import "IUStatusItem.h"
 
-@interface IUDropView : NSView
+@interface IUDropView : NSView<NSMenuDelegate>
 {
     NSArray* fileTypes;
     IUStatusItem* item;
     NSOperationQueue* uploads;
     NSTimer* timer;
     float theta;
+    BOOL highlight;
 }
 
 @property (readwrite, assign) IUStatusItem* item;

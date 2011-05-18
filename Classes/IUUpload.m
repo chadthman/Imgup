@@ -137,7 +137,7 @@
                                        iconData:[NSData dataWithContentsOfFile:file]
                                        priority:0
                                        isSticky:NO
-                                   clickContext:nil];
+                                   clickContext:[NSDictionary dictionaryWithObject:url forKey:@"URL"]];
         
         // Keep track of images we've uploaded
         [lock lock];
