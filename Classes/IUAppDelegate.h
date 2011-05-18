@@ -13,11 +13,12 @@
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #import <Cocoa/Cocoa.h>
+#import <Growl/Growl.h>
 #import "DDHotKeyCenter.h"
 #import "IUDropView.h"
 #import "IUWindowController.h"
 
-@interface IUAppDelegate : NSObject <NSApplicationDelegate>
+@interface IUAppDelegate : NSObject <NSApplicationDelegate,GrowlApplicationBridgeDelegate>
 {
     NSStatusItem *item;
     IUDropView* dropView;
