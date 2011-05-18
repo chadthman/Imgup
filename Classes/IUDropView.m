@@ -59,6 +59,8 @@
 
 -(void)drawRect:(NSRect)dirtyRect
 {
+    [item drawStatusBarBackgroundInRect:[self frame] withHighlight:highlight];
+    
     if ([[uploads operations] count] == 0)
     {
         [[NSColor colorWithPatternImage:[NSImage
@@ -121,7 +123,20 @@
         [[[NSApp delegate] recentUploads] setSubmenu:menu];
     }
 
+    [[item menu] setDelegate:self];
     [item popUpStatusItemMenu:[item menu]];
+}
+
+- (void)menuWillOpen:(NSMenu *)menu
+{
+    highlight = YES;
+    [self setNeedsDisplay:YES];
+}
+
+- (void)menuDidClose:(NSMenu *)menu
+{
+    highlight = NO;
+    [self setNeedsDisplay:YES];
 }
 
 -(NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender {
