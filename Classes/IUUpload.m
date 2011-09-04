@@ -112,6 +112,8 @@
         if ([nodes count] != 1)
         {
             NSLog(@"Wrong number of nodes: %u", (uint) [nodes count]);
+			// Do not proceed, this causes a crash.
+			return;
         }
         
         NSString *url = [[nodes objectAtIndex:0] stringValue];
