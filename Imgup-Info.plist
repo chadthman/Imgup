@@ -27,7 +27,7 @@
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Nate Stedman</string>
+	<string>© 2011-2012 Imgup Contributors</string>
 	<key>NSMainNibFile</key>
 	<string>Imgup.nib</string>
 	<key>NSPrincipalClass</key>
