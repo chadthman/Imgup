@@ -81,6 +81,7 @@
 		43E73FE8121B60C50039D8AB /* IUStatusItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUStatusItem.m; sourceTree = "<group>"; };
 		43E7402F121B64740039D8AB /* IUUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUUpload.h; sourceTree = "<group>"; };
 		43E74030121B64740039D8AB /* IUUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUUpload.m; sourceTree = "<group>"; };
+		43F4DA9514F15FCC00D3D02F /* Imgup.entitlements */ = {isa = PBXFileReference; path = Imgup.entitlements; sourceTree = "<group>"; };
 		B79C048D12E5FC18007A2214 /* NSDataBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDataBase64.h; path = Classes/NSDataBase64.h; sourceTree = "<group>"; };
 		B79C048E12E5FC18007A2214 /* NSDataBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDataBase64.m; path = Classes/NSDataBase64.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,6 +150,7 @@
 		43D8413D121B3F4B007AB813 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				43F4DA9514F15FCC00D3D02F /* Imgup.entitlements */,
 				43DD080D131B34A6000A8BE6 /* dsa_pub.pem */,
 				4336C971121C2F9D00090284 /* Growl Registration Ticket.growlRegDict */,
 				4336C937121C2C9400090284 /* Icon.icns */,
@@ -311,6 +313,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Imgup.entitlements;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -331,6 +335,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Imgup.entitlements;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";

@@ -43,7 +43,6 @@
 #pragma mark Window Delegate
 -(void)windowWillClose:(NSNotification*)notification
 {
-    NSLog(@"wtf");
     [[NSApp delegate] setAllUploads:nil];
 }
 
