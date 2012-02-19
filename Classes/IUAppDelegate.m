@@ -73,6 +73,20 @@
                                      object:nil];
 }
 
+-(IBAction)onAbout:(NSMenuItem*)sender
+{
+    [NSApp orderFrontStandardAboutPanel:self];
+    
+    // find the window and set it to the actual front, since we're not a "real" app, that doesn't happen automatically
+    for (NSWindow* window in [NSApp windows])
+    {
+        if ([window isKindOfClass:[NSPanel class]])
+        {
+            window.level = NSFloatingWindowLevel;
+        }
+    }
+}
+
 -(IBAction)onPreferences:(NSMenuItem*)sender
 {    
 }

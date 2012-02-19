@@ -35,6 +35,7 @@
 @property (readonly) NSMenuItem* recentUploads;
 @property (readwrite, strong) IUWindowController* allUploads;
 
+-(IBAction)onAbout:(NSMenuItem*)sender;
 -(IBAction)onPreferences:(NSMenuItem*)sender;
 -(IBAction)onUploadClipboard:(NSMenuItem *)sender;
 -(IBAction)onAllUploads:(NSMenuItem*)sender;
