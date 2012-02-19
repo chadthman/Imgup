@@ -55,16 +55,17 @@
     
     for (NSString* file in files) {
         NSString* imageData = [[NSData dataWithContentsOfFile:file] base64EncodedString];
-        imageData = (__bridge NSString*)CFURLCreateStringByAddingPercentEscapes(NULL,
-                                                                                (__bridge CFStringRef)imageData,
-                                                                                NULL,
-                                                                                (CFStringRef)@";/?:@&=+$",
-                                                                                kCFStringEncodingUTF8);
+        CFStringRef escaped = CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                      (__bridge CFStringRef)imageData,
+                                                                      NULL,
+                                                                      (CFStringRef)@";/?:@&=+$",
+                                                                      kCFStringEncodingUTF8);
         
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[self uploadURL]];
-        NSString* httpBody = [NSString stringWithFormat:@"image=%@&key=%@", imageData, KEY];
+        NSString* httpBody = [NSString stringWithFormat:@"image=%@&key=%@", (__bridge NSString*)escaped, KEY];
         [request setHTTPMethod:@"POST"];
         [request setHTTPBody:[httpBody dataUsingEncoding:NSUTF8StringEncoding]];
+        CFRelease(escaped);
         
         // TODO: Make this an asynchronous request
         NSURLResponse* response = nil;
