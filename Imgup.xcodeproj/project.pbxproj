@@ -15,7 +15,6 @@
 		4336C972121C2F9D00090284 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 4336C971121C2F9D00090284 /* Growl Registration Ticket.growlRegDict */; };
 		433D869F131AB1A100797D5A /* IUWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 433D869E131AB1A100797D5A /* IUWindowController.m */; };
 		433D86A1131AB1F800797D5A /* Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 433D86A0131AB1F800797D5A /* Window.xib */; };
-		433D86A5131AB2D100797D5A /* IUScrollbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 433D86A4131AB2D100797D5A /* IUScrollbar.m */; };
 		433D86A8131AB69900797D5A /* IUImageBrowserItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 433D86A7131AB69900797D5A /* IUImageBrowserItem.m */; };
 		433D86BD131AB87F00797D5A /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433D86BC131AB87F00797D5A /* Quartz.framework */; };
 		43D84147121B3F4B007AB813 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D84146121B3F4B007AB813 /* Cocoa.framework */; };
@@ -56,8 +55,6 @@
 		433D869D131AB1A100797D5A /* IUWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUWindowController.h; sourceTree = "<group>"; };
 		433D869E131AB1A100797D5A /* IUWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUWindowController.m; sourceTree = "<group>"; };
 		433D86A0131AB1F800797D5A /* Window.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Window.xib; path = xib/Window.xib; sourceTree = "<group>"; };
-		433D86A3131AB2D100797D5A /* IUScrollbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUScrollbar.h; sourceTree = "<group>"; };
-		433D86A4131AB2D100797D5A /* IUScrollbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUScrollbar.m; sourceTree = "<group>"; };
 		433D86A6131AB69900797D5A /* IUImageBrowserItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUImageBrowserItem.h; sourceTree = "<group>"; };
 		433D86A7131AB69900797D5A /* IUImageBrowserItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUImageBrowserItem.m; sourceTree = "<group>"; };
 		433D86BC131AB87F00797D5A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
@@ -123,8 +120,6 @@
 				43E74030121B64740039D8AB /* IUUpload.m */,
 				433D869D131AB1A100797D5A /* IUWindowController.h */,
 				433D869E131AB1A100797D5A /* IUWindowController.m */,
-				433D86A3131AB2D100797D5A /* IUScrollbar.h */,
-				433D86A4131AB2D100797D5A /* IUScrollbar.m */,
 				433D86A6131AB69900797D5A /* IUImageBrowserItem.h */,
 				433D86A7131AB69900797D5A /* IUImageBrowserItem.m */,
 			);
@@ -251,7 +246,6 @@
 				43E73FE9121B60C50039D8AB /* IUStatusItem.m in Sources */,
 				43E74031121B64740039D8AB /* IUUpload.m in Sources */,
 				433D869F131AB1A100797D5A /* IUWindowController.m in Sources */,
-				433D86A5131AB2D100797D5A /* IUScrollbar.m in Sources */,
 				433D86A8131AB69900797D5A /* IUImageBrowserItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
