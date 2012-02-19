@@ -314,7 +314,7 @@
 				GCC_PREFIX_HEADER = Imgup_Prefix.pch;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Imgup-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
+				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/Imgup-fubsaxaaxdgzlxbuvfedgbjsynzu/Build/Products/Debug\"",
@@ -346,7 +346,7 @@
 				GCC_PREFIX_HEADER = Imgup_Prefix.pch;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Imgup-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
+				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/Imgup-fubsaxaaxdgzlxbuvfedgbjsynzu/Build/Products/Debug\"",
