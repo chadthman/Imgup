@@ -46,7 +46,7 @@
 
 -(NSURL *)redditURL:(NSString *)url
 {
-    return [NSString stringWithFormat:@"http://www.reddit.com/submit?url=%@", url];
+    return [NSURL URLWithString:[NSString stringWithFormat:@"http://www.reddit.com/submit?url=%@", url]];
 }
 
 -(void)main
