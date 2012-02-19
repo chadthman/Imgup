@@ -65,6 +65,7 @@ static unsigned char base64DecodeLookup[256] =
 // returns the decoded buffer. Must be free'd by caller. Length is given by
 //	outputLength.
 //
+void *NewBase64Decode(const char *inputBuffer, size_t length, size_t *outputLength);
 void *NewBase64Decode(const char *inputBuffer, size_t length, size_t *outputLength) {
 	if (length == -1)
 	{
@@ -131,6 +132,7 @@ void *NewBase64Decode(const char *inputBuffer, size_t length, size_t *outputLeng
 //	outputLength.
 //
 
+char *NewBase64Encode(const void *buffer, size_t length, bool separateLines, size_t *outputLength);
 char *NewBase64Encode(const void *buffer, size_t length, bool separateLines, size_t *outputLength) {
 	const unsigned char *inputBuffer = (const unsigned char *)buffer;
 	

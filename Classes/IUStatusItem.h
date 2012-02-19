@@ -15,11 +15,5 @@
 #import <Cocoa/Cocoa.h>
 
 @class IUDropView;
-    
-@interface IUStatusItem : NSStatusItem
-{
-}
-
--(id)initWithView:(IUDropView*)dropView menu:(NSMenu*)menu;
-
-@end
+ 
+NSStatusItem* IUStatusItemWithViewAndMenu(IUDropView* view, NSMenu* menu);

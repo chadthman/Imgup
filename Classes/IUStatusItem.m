@@ -16,23 +16,13 @@
 #import "IUDropView.h"
 #import "IUAppDelegate.h"
 
-@implementation IUStatusItem
-
--(id)initWithView:(IUDropView*)dropView menu:(NSMenu*)menu
+NSStatusItem* IUStatusItemWithViewAndMenu(IUDropView* view, NSMenu* menu)
 {
-    self = [[[NSStatusBar systemStatusBar]
-             statusItemWithLength:SIZE] retain];
+    NSStatusItem* item = [[NSStatusBar systemStatusBar] statusItemWithLength:SIZE];
+    item.highlightMode = YES;
+    item.menu = menu;
+    item.view = view;
+    view.item = item;
     
-    if (self)
-    {
-        [self setHighlightMode:YES];
-        [self setMenu:menu];
-        [self setView:dropView];
-
-        [dropView setItem:self];
-    }
-    
-    return self;
+    return item;
 }
-
-@end

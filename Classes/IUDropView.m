@@ -43,16 +43,16 @@
         
         theta = 0;
         
-        fileTypes = [[NSArray arrayWithObjects:@".png",
-                                               @".jpg",
-                                               @".jpeg",
-                                               @".gif",
-                                               @".apng",
-                                               @".tiff",
-                                               @".bmp",
-                                               @".pdf",
-                                               @".xcf",
-                                               nil] retain];
+        fileTypes = [NSArray arrayWithObjects:@".png",
+                                              @".jpg",
+                                              @".jpeg",
+                                              @".gif",
+                                              @".apng",
+                                              @".tiff",
+                                              @".bmp",
+                                              @".pdf",
+                                              @".xcf",
+                                              nil];
     }
     return self;
 }

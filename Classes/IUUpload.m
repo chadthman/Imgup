@@ -34,7 +34,7 @@
     self = [super init];
     if (self)
     {
-        block = Block_copy(blk);
+        block = [blk copy];
     }
     return self;
 }
@@ -51,16 +51,15 @@
 
 -(void)main
 {
-    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
     NSLock* lock = [[NSLock alloc] init];
     
     for (NSString* file in files) {
         NSString* imageData = [[NSData dataWithContentsOfFile:file] base64EncodedString];
-        imageData = (NSString*)CFURLCreateStringByAddingPercentEscapes(NULL,
-                                                                       (CFStringRef)imageData,
-                                                                       NULL,
-                                                                       (CFStringRef)@";/?:@&=+$",
-                                                                       kCFStringEncodingUTF8);
+        imageData = (__bridge NSString*)CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                                (__bridge CFStringRef)imageData,
+                                                                                NULL,
+                                                                                (CFStringRef)@";/?:@&=+$",
+                                                                                kCFStringEncodingUTF8);
         
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[self uploadURL]];
         NSString* httpBody = [NSString stringWithFormat:@"image=%@&key=%@", imageData, KEY];
@@ -151,8 +150,6 @@
             block(self);
         }
     }
-    
-    [pool release];
 }
 
 @end

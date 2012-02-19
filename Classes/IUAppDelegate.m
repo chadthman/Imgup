@@ -45,7 +45,7 @@
     dropView = [[IUDropView alloc] initWithFrame:
                 NSMakeRect(0, 0, SIZE, SIZE)];
     
-    item = [[IUStatusItem alloc] initWithView:dropView menu:menu];
+    item = IUStatusItemWithViewAndMenu(dropView, menu);
     
     // load the old history
     if ([[NSFileManager defaultManager] fileExistsAtPath:HISTORY_FILE] == YES) {

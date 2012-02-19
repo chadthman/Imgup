@@ -33,7 +33,7 @@
 
 @property (readonly) NSArray* history;
 @property (readonly) NSMenuItem* recentUploads;
-@property (readwrite, assign) IUWindowController* allUploads;
+@property (readwrite, strong) IUWindowController* allUploads;
 
 -(IBAction)onPreferences:(NSMenuItem*)sender;
 -(IBAction)onUploadClipboard:(NSMenuItem *)sender;

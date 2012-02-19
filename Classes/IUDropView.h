@@ -18,14 +18,14 @@
 @interface IUDropView : NSView<NSMenuDelegate>
 {
     NSArray* fileTypes;
-    IUStatusItem* item;
+    NSStatusItem* item;
     NSOperationQueue* uploads;
     NSTimer* timer;
     float theta;
     BOOL highlight;
 }
 
-@property (readwrite, assign) IUStatusItem* item;
+@property (readwrite, strong) NSStatusItem* item;
 @property (readonly) NSOperationQueue* uploads;
 
 -(void)onRecent:(NSMenuItem*)sender;

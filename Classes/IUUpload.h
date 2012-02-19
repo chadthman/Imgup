@@ -21,12 +21,12 @@ typedef void (^IUUploadCompleteBlock)(IUUpload*);
 @interface IUUpload : NSOperation
 {
     NSArray* files;
-    bool reddit;
+    BOOL reddit;
     IUUploadCompleteBlock block;
 }
 
-@property (readwrite, assign) NSArray* files;
-@property (readwrite, assign) bool reddit;
+@property (readwrite, strong) NSArray* files;
+@property (readwrite) BOOL reddit;
 
 -(id)initWithBlock:(IUUploadCompleteBlock)block;
 
