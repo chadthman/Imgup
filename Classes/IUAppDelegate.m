@@ -128,30 +128,34 @@
 
 -(void)uploadScreenshotWithArguments:(NSArray*)arguments
 {
+    NSFileManager* fm = [NSFileManager defaultManager];
     NSString* filename;
     do
     {
         filename = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"%i", rand()]];
-    } while ([[NSFileManager defaultManager] fileExistsAtPath:filename]);
+    } while ([fm fileExistsAtPath:filename]);
     
     NSTask* task = [NSTask launchedTaskWithLaunchPath:@"/usr/sbin/screencapture"
                                             arguments:[arguments arrayByAddingObject:filename]];
     [task waitUntilExit];
     
     // upload the file
-    IUUpload* upload = [[IUUpload alloc] initWithBlock:^(IUUpload* ul) {
-        NSFileManager* fm = [NSFileManager defaultManager];
-        for (NSString* file in [ul files])
-        {
-            NSError* error = nil;
-            [fm removeItemAtPath:file error:&error];
-            if (error) [NSApp presentError:error];
-        }
-    }];
-    
-    [upload setFiles:[NSArray arrayWithObject:filename]];
-    [[dropView uploads] addOperation:upload];
-    [dropView uploadStarted];
+    if ([fm fileExistsAtPath:filename])
+    {
+        IUUpload* upload = [[IUUpload alloc] initWithBlock:^(IUUpload* ul) {
+            NSFileManager* fm = [NSFileManager defaultManager];
+            for (NSString* file in [ul files])
+            {
+                NSError* error = nil;
+                [fm removeItemAtPath:file error:&error];
+                if (error) [NSApp presentError:error];
+            }
+        }];
+        
+        upload.files = [NSArray arrayWithObject:filename];
+        [dropView.uploads addOperation:upload];
+        [dropView uploadStarted];
+    }
 }
 
 -(void)addImage:(NSString*)file withImgurUrl:(NSString*)url
