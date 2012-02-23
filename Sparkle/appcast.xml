@@ -8,6 +8,20 @@
 			<description>Most recent changes with links to updates.</description>
 			<language>en</language>
 			<item>
+				<title>Version 1.3</title>
+				<sparkle:releaseNotesLink>
+					http://sparkle.natestedman.com/imgup/1_3.html
+				</sparkle:releaseNotesLink>
+				<pubDate>Sun, 19 Feb 2012 13:20:00 +0500</pubDate>
+				<enclosure url="http://sparkle.natestedman.com/imgup/1_3.zip"
+					sparkle:version="1.3"
+					length="707678"
+					type="application/octet-stream"
+					sparkle:dsaSignature="MCwCFHV3wNdNeZuiaWHjjaUS+uOr4DPPAhQl8bcnEXubuhkP2u+Sx7+xCNpXtw=="/>
+				
+			</item>
+
+			<item>
 				<title>Version 1.2</title>
 				<sparkle:releaseNotesLink>
 					http://sparkle.natestedman.com/imgup/1_2.html
@@ -20,7 +34,6 @@
 					sparkle:dsaSignature="MCwCFEl43STokTyuoD3CRwaSUSzKzUYeAhRflOAOqoCjo4yhNyrOTVFvWPvyHA=="/>
 				
 			</item>
-
 
 			<item>
 				<title>Version 1.1</title>
