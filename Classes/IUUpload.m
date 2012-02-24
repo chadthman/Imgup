@@ -12,7 +12,6 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-#import <Growl/Growl.h>
 #import "IUAppDelegate.h"
 #import "IUUpload.h"
 #import "NSDataBase64.h"
@@ -75,13 +74,6 @@
                                                                  error:&error];
         if (!responseData)
         {
-            [GrowlApplicationBridge notifyWithTitle:NSLocalizedString(@"Upload Failed", nil)
-                                        description:[[NSURL URLWithString:file] lastPathComponent]
-                                   notificationName:@"Upload Failed"
-                                           iconData:nil
-                                           priority:0
-                                           isSticky:NO
-                                       clickContext:nil];
             NSLog(@"Upload for %@ failed", file);
             continue;
         }
@@ -133,13 +125,6 @@
         
         // Notify that the upload is finished
         [[NSSound soundNamed:@"Glass"] play];
-        [GrowlApplicationBridge notifyWithTitle:NSLocalizedString(@"Upload Complete", nil)
-                                    description:url
-                               notificationName:@"Upload Complete"
-                                       iconData:[NSData dataWithContentsOfFile:file]
-                                       priority:0
-                                       isSticky:NO
-                                   clickContext:[NSDictionary dictionaryWithObject:url forKey:@"URL"]];
         
         // Keep track of images we've uploaded
         [lock lock];

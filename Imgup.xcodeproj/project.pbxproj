@@ -10,9 +10,6 @@
 		431E6D7D121C93490050229D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 431E6D7C121C93490050229D /* Carbon.framework */; };
 		4336C923121C213800090284 /* MenuBarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4336C922121C213800090284 /* MenuBarIcon.png */; };
 		4336C938121C2C9400090284 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4336C937121C2C9400090284 /* Icon.icns */; };
-		4336C954121C2E2200090284 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4336C953121C2E2200090284 /* Growl.framework */; };
-		4336C958121C2E3100090284 /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4336C953121C2E2200090284 /* Growl.framework */; };
-		4336C972121C2F9D00090284 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 4336C971121C2F9D00090284 /* Growl Registration Ticket.growlRegDict */; };
 		433D869F131AB1A100797D5A /* IUWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 433D869E131AB1A100797D5A /* IUWindowController.m */; };
 		433D86A1131AB1F800797D5A /* Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 433D86A0131AB1F800797D5A /* Window.xib */; };
 		433D86A8131AB69900797D5A /* IUImageBrowserItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 433D86A7131AB69900797D5A /* IUImageBrowserItem.m */; };
@@ -22,9 +19,6 @@
 		43D84154121B3F4B007AB813 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 43D84152121B3F4B007AB813 /* Credits.rtf */; };
 		43D84157121B3F4B007AB813 /* IUAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D84156121B3F4B007AB813 /* IUAppDelegate.m */; };
 		43D84165121B4379007AB813 /* Imgup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43D84164121B4379007AB813 /* Imgup.xib */; };
-		43DD07F4131B3318000A8BE6 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43DD07F3131B3318000A8BE6 /* Sparkle.framework */; };
-		43DD07F7131B331A000A8BE6 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 43DD07F3131B3318000A8BE6 /* Sparkle.framework */; };
-		43DD080E131B34A6000A8BE6 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 43DD080D131B34A6000A8BE6 /* dsa_pub.pem */; };
 		43E73F3E121B48C70039D8AB /* IUDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E73F3D121B48C70039D8AB /* IUDropView.m */; };
 		43E73FE9121B60C50039D8AB /* IUStatusItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E73FE8121B60C50039D8AB /* IUStatusItem.m */; };
 		43E74031121B64740039D8AB /* IUUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E74030121B64740039D8AB /* IUUpload.m */; };
@@ -38,8 +32,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				43DD07F7131B331A000A8BE6 /* Sparkle.framework in Copy Frameworks */,
-				4336C958121C2E3100090284 /* Growl.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,10 +78,8 @@
 			files = (
 				43F4DABE14F1639000D3D02F /* libNon ARC.a in Frameworks */,
 				43D84147121B3F4B007AB813 /* Cocoa.framework in Frameworks */,
-				4336C954121C2E2200090284 /* Growl.framework in Frameworks */,
 				431E6D7D121C93490050229D /* Carbon.framework in Frameworks */,
 				433D86BD131AB87F00797D5A /* Quartz.framework in Frameworks */,
-				43DD07F4131B3318000A8BE6 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,9 +218,7 @@
 				43D84165121B4379007AB813 /* Imgup.xib in Resources */,
 				4336C923121C213800090284 /* MenuBarIcon.png in Resources */,
 				4336C938121C2C9400090284 /* Icon.icns in Resources */,
-				4336C972121C2F9D00090284 /* Growl Registration Ticket.growlRegDict in Resources */,
 				433D86A1131AB1F800797D5A /* Window.xib in Resources */,
-				43DD080E131B34A6000A8BE6 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,8 +39,6 @@
     // random seed
     srand(time(NULL));
     
-    [GrowlApplicationBridge setGrowlDelegate:self];
-    
     // create a drop view
     dropView = [[IUDropView alloc] initWithFrame:
                 NSMakeRect(0, 0, SIZE, SIZE)];
