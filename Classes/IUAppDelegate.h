@@ -23,30 +23,49 @@
     IUDropView* dropView;
     IBOutlet NSMenu* menu;
     IBOutlet NSMenuItem* recentUploads;
+    IBOutlet NSMenuItem* saveLocal;
+    //IBOutlet NSMenuItem* onOpen;
     NSMutableArray* history;
+    NSDictionary* preferencesArray;
     
     DDHotKeyCenter* hotkeyCenter;
     
     IUWindowController* allUploads;
+    BOOL keepFile;
 }
 
+//@interface Controller : NSObject
+//{
+//    
+//}
+
+@property (nonatomic) NSDictionary* preferencesArray;
 @property (readonly) NSArray* history;
 @property (readonly) NSMenuItem* recentUploads;
+@property (readonly) NSMenuItem* saveLocal;
 @property (readwrite, strong) IUWindowController* allUploads;
 
 -(IBAction)onAbout:(NSMenuItem*)sender;
 -(IBAction)onPreferences:(NSMenuItem*)sender;
 -(IBAction)onUploadClipboard:(NSMenuItem *)sender;
 -(IBAction)onAllUploads:(NSMenuItem*)sender;
+-(IBAction)onSave:(NSMenuItem*)sender;
 -(IBAction)onQuit:(NSMenuItem*)sender;
+-(IBAction)onOpenDir:(NSMenuItem*)sender;
 
 -(void)addImage:(NSString*)file withImgurUrl:(NSString*)url;
+-(NSString*)getFileName;
 -(NSString *)applicationSupportDirectory;
 -(NSString*)imagePath:(NSString*)filename;
 
 -(void)uploadScreenshot:(NSEvent*)event;
 -(void)uploadSnippedScreenshot:(NSEvent*)event;
 -(void)uploadScreenshotWithArguments:(NSArray*)arguments;
+
+//-(void)captureScreenStart:(NSEvent*)event;
+//-(void)captureScreenEnd:(NSEvent*)event;
+-(void)startFullScreenRecord;
+-(void)startSnippitScreenRecord;
 
 @end
 

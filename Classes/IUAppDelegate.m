@@ -28,11 +28,19 @@
 #define HISTORY_FILE [NSString stringWithFormat:@"%@/history.plist", \
                       [self applicationSupportDirectory]]
 
+#define PREF_FILE [NSString stringWithFormat:@"%@/pref.plist", \
+                    [self applicationSupportDirectory]]
+
+#define LOCAL_COPY [NSString stringWithFormat:@"%@/SavedImages", \
+                    [self applicationSupportDirectory]]
+
 @implementation IUAppDelegate
 
+@synthesize preferencesArray;
 @synthesize history;
 @synthesize recentUploads;
 @synthesize allUploads;
+@synthesize saveLocal;
 
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -49,26 +57,59 @@
     if ([[NSFileManager defaultManager] fileExistsAtPath:HISTORY_FILE] == YES) {
         history = [NSMutableArray arrayWithContentsOfFile:HISTORY_FILE];
     }
-    
     // or create a new array if it isn't there
     else {
         history = [[NSMutableArray alloc] init];
     }
     
+    if ([[NSFileManager defaultManager] fileExistsAtPath:PREF_FILE] == YES) {
+        preferencesArray = [NSDictionary dictionaryWithContentsOfFile:PREF_FILE];
+        keepFile = [[preferencesArray objectForKey:@"save"] boolValue];
+        if (keepFile)
+        {
+            [saveLocal setState:NSOnState];
+        }
+        else
+        {
+            [saveLocal setState:NSOffState];
+        }
+    }
+    else {
+        preferencesArray = [[NSDictionary alloc] init];
+    }
+    
+    
     // register global hotkeys
     hotkeyCenter = [[DDHotKeyCenter alloc] init];
-    [hotkeyCenter registerHotKeyWithKeyCode:20
-                              modifierFlags:NSAlternateKeyMask | NSCommandKeyMask | NSShiftKeyMask
+    [hotkeyCenter registerHotKeyWithKeyCode:18
+                              modifierFlags:NSCommandKeyMask | NSShiftKeyMask
                                      target:self
                                      action:@selector(uploadScreenshot:)
                                      object:nil];
     
     hotkeyCenter = [[DDHotKeyCenter alloc] init];
-    [hotkeyCenter registerHotKeyWithKeyCode:21
-                              modifierFlags:NSAlternateKeyMask | NSCommandKeyMask | NSShiftKeyMask
+    [hotkeyCenter registerHotKeyWithKeyCode:19
+                              modifierFlags:NSCommandKeyMask | NSShiftKeyMask
                                      target:self
                                      action:@selector(uploadSnippedScreenshot:)
                                      object:nil];
+    
+    //For full screen recording 
+    hotkeyCenter = [[DDHotKeyCenter alloc] init];
+    [hotkeyCenter registerHotKeyWithKeyCode:22
+                              modifierFlags:NSCommandKeyMask | NSShiftKeyMask
+                                     target:self
+                                     action:@selector(recordFullScreen:)
+                                     object:nil];
+    
+    //For part of screen recording
+    hotkeyCenter = [[DDHotKeyCenter alloc] init];
+    [hotkeyCenter registerHotKeyWithKeyCode:23
+                              modifierFlags:NSCommandKeyMask | NSShiftKeyMask
+                                     target:self
+                                     action:@selector(recordScreenSelection:)
+                                     object:nil];
+    
 }
 
 -(IBAction)onAbout:(NSMenuItem*)sender
@@ -82,6 +123,37 @@
         {
             window.level = NSFloatingWindowLevel;
         }
+    }
+}
+
+-(IBAction)onSave:(NSMenuItem*)sender
+{
+    NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
+    
+    
+    // track the image
+    
+    if (keepFile)
+    {
+        keepFile = FALSE;
+        [dict setValue:[NSNumber numberWithBool:NO] forKey:@"save"];
+        //[dict setValue:[NSNumber numberWithBool:keepFile] forKey:@"save"];
+        [saveLocal setState:NSOffState];
+    }
+    else
+    {
+        keepFile = TRUE;
+        [dict setValue:[NSNumber numberWithBool:YES] forKey:@"save"];
+        //[dict setValue:[NSNumber numberWithBool:keepFile] forKey:@"save"];
+        [saveLocal setState:NSOnState];
+    }
+    [dict writeToFile:PREF_FILE atomically:YES];
+}
+
+-(IBAction)onOpenDir:(NSMenuItem*)sender
+{
+    if ([[NSFileManager defaultManager] fileExistsAtPath:LOCAL_COPY] == YES)  {
+        [[NSWorkspace sharedWorkspace] openFile:LOCAL_COPY];
     }
 }
 
@@ -124,6 +196,34 @@
     [self uploadScreenshotWithArguments:[NSArray arrayWithObject:@"-i"]];
 }
 
+-(void)recordFullScreen:(NSEvent*)event
+{
+    [self startFullScreenRecord];
+}
+
+-(void)recordScreenSelection:(NSEvent*)event
+{
+    [self startSnippitScreenRecord];
+}
+
+
+-(void)startFullScreenRecord
+{
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"StartScreenScript" ofType:@"scpt"];
+    NSURL* url = [NSURL fileURLWithPath:path];NSDictionary* errors = [NSDictionary dictionary];
+    NSAppleScript* appleScript = [[NSAppleScript alloc] initWithContentsOfURL:url error:&errors];
+    [appleScript executeAndReturnError:nil];
+}
+
+-(void)startSnippitScreenRecord
+{
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"RecordSnippit" ofType:@"scpt"];
+    NSURL* url = [NSURL fileURLWithPath:path];NSDictionary* errors = [NSDictionary dictionary];
+    NSAppleScript* appleScript = [[NSAppleScript alloc] initWithContentsOfURL:url error:&errors];
+    [appleScript executeAndReturnError:nil];
+
+}
+
 -(void)uploadScreenshotWithArguments:(NSArray*)arguments
 {
     NSFileManager* fm = [NSFileManager defaultManager];
@@ -137,9 +237,22 @@
                                             arguments:[arguments arrayByAddingObject:filename]];
     [task waitUntilExit];
     
+    //Gets The time
+    
+    
     // upload the file
     if ([fm fileExistsAtPath:filename])
     {
+        if (keepFile)
+        {
+            NSError *copyError = nil;
+            NSString *permName = [[NSApp delegate] getFileName];
+            //Copyies the file
+            if(![[NSFileManager defaultManager] copyItemAtPath:filename toPath:permName error:&copyError])
+            {
+                NSLog(@"Error: %@", copyError);
+            }
+        }
         IUUpload* upload = [[IUUpload alloc] initWithBlock:^(IUUpload* ul) {
             NSFileManager* fm = [NSFileManager defaultManager];
             for (NSString* file in [ul files])
@@ -155,6 +268,50 @@
         [dropView uploadStarted];
     }
 }
+
+-(NSString*) getFileName
+{
+    int i = 1;
+    NSFileManager* fm = [NSFileManager defaultManager];
+    NSDate* now = [NSDate date];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *dateComponents = [gregorian components:(NSHourCalendarUnit  | NSMinuteCalendarUnit |
+                                                              NSSecondCalendarUnit) fromDate:now];
+    NSInteger hour = [dateComponents hour];
+    NSInteger min = [dateComponents minute];
+    NSInteger sec = [dateComponents second];
+    
+    NSDateFormatter *weekdayFormatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+    [formatter setDateFormat: @"d MMMM yyyy"];
+    [weekdayFormatter setDateFormat: @"EEEE"];
+    
+    NSString *formattedDate = [formatter stringFromDate: now];
+    //NSString *weekday = [weekdayFormatter stringFromDate: now];
+    
+    NSString* path = [NSString stringWithFormat:@"%@/SavedImages/", [[NSApp delegate] applicationSupportDirectory]];
+    if ([[NSFileManager defaultManager] fileExistsAtPath: path] == NO)
+    {
+        [[NSFileManager defaultManager] createDirectoryAtPath:path
+                                  withIntermediateDirectories:YES
+                                                   attributes:nil
+                                                        error:nil];
+    }
+    
+    NSString *temp = @"~/Library/Application Support/Imgup/SavedImages/";
+    NSString *filePath = [temp stringByExpandingTildeInPath];
+    NSString *date = [NSString stringWithFormat:@"/Snippit %@ %02ld.%02ld.%02ld",formattedDate , hour, min, sec];
+    NSString *permName = [filePath stringByAppendingString:date];
+        temp = [permName stringByAppendingString:@".png"];
+    
+    while ([fm fileExistsAtPath:temp])
+    {
+        temp = [permName stringByAppendingString:[NSString stringWithFormat:@".%i.png", i++]];
+    }
+    return temp;
+}
+
 
 -(void)addImage:(NSString*)file withImgurUrl:(NSString*)url
 {

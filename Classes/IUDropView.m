@@ -63,9 +63,14 @@
     
     if ([[uploads operations] count] == 0)
     {
-        [[NSColor colorWithPatternImage:[NSImage
-                                         imageNamed:@"MenuBarIcon"]] set];
-        [NSBezierPath fillRect:[self frame]];
+        if (highlight==true) {
+            [[NSColor colorWithPatternImage:[NSImage imageNamed:@"MenuBarIconClicked"]] set];
+            [NSBezierPath fillRect:[self frame]];
+        }
+        else {
+            [[NSColor colorWithPatternImage:[NSImage imageNamed:@"MenuBarIcon"]] set];
+            [NSBezierPath fillRect:[self frame]];
+        }
     }
     else
     {
