@@ -284,7 +284,7 @@
     NSDateFormatter *weekdayFormatter = [[NSDateFormatter alloc] init];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     
-    [formatter setDateFormat: @"d MMMM yyyy"];
+    [formatter setDateFormat: @"yyyy MM dd"];
     [weekdayFormatter setDateFormat: @"EEEE"];
     
     NSString *formattedDate = [formatter stringFromDate: now];
@@ -303,7 +303,7 @@
     NSString *filePath = [temp stringByExpandingTildeInPath];
     NSString *date = [NSString stringWithFormat:@"/Snippit %@ %02ld.%02ld.%02ld",formattedDate , hour, min, sec];
     NSString *permName = [filePath stringByAppendingString:date];
-        temp = [permName stringByAppendingString:@".png"];
+              temp = [permName stringByAppendingString:@".png"];
     
     while ([fm fileExistsAtPath:temp])
     {
