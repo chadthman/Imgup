@@ -221,7 +221,6 @@
     NSURL* url = [NSURL fileURLWithPath:path];NSDictionary* errors = [NSDictionary dictionary];
     NSAppleScript* appleScript = [[NSAppleScript alloc] initWithContentsOfURL:url error:&errors];
     [appleScript executeAndReturnError:nil];
-
 }
 
 -(void)uploadScreenshotWithArguments:(NSArray*)arguments
@@ -288,7 +287,6 @@
     [weekdayFormatter setDateFormat: @"EEEE"];
     
     NSString *formattedDate = [formatter stringFromDate: now];
-    //NSString *weekday = [weekdayFormatter stringFromDate: now];
     
     NSString* path = [NSString stringWithFormat:@"%@/SavedImages/", [[NSApp delegate] applicationSupportDirectory]];
     if ([[NSFileManager defaultManager] fileExistsAtPath: path] == NO)
@@ -299,17 +297,15 @@
                                                         error:nil];
     }
     
-    NSString *temp = @"~/Library/Application Support/Imgup/SavedImages/";
-    NSString *filePath = [temp stringByExpandingTildeInPath];
     NSString *date = [NSString stringWithFormat:@"/Snippit %@ %02ld.%02ld.%02ld",formattedDate , hour, min, sec];
-    NSString *permName = [filePath stringByAppendingString:date];
-              temp = [permName stringByAppendingString:@".png"];
+    NSString *permName = [LOCAL_COPY stringByAppendingString:date];
+    NSString *fileName = [permName stringByAppendingString:@".png"];
     
-    while ([fm fileExistsAtPath:temp])
+    while ([fm fileExistsAtPath:fileName])
     {
-        temp = [permName stringByAppendingString:[NSString stringWithFormat:@".%i.png", i++]];
+        fileName = [permName stringByAppendingString:[NSString stringWithFormat:@".%i.png", i++]];
     }
-    return temp;
+    return fileName;
 }
 
 
@@ -353,10 +349,7 @@
     
     // save the thumbnail
     [[NSBitmapImageRep representationOfImageRepsInArray:[[[NSImage alloc]
-                                                         initWithData:
-                                                         [sized
-                                                          TIFFRepresentation]]
-                                                         representations]
+                                           initWithData:[sized TIFFRepresentation]]representations]
                                               usingType:NSJPEGFileType
                                              properties:nil]
      writeToFile:[self imagePath:[dict valueForKey:FILE_KEY]] atomically:YES];
@@ -367,11 +360,8 @@
 
 -(NSString*)applicationSupportDirectory
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(
-        NSApplicationSupportDirectory,
-		NSUserDomainMask, YES);
-    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] :
-                                               NSTemporaryDirectory();
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory,NSUserDomainMask, YES);
+    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : NSTemporaryDirectory();
     return [basePath stringByAppendingPathComponent:@"Imgup"];
 }
 
