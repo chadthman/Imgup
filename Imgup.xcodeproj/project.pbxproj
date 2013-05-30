@@ -23,6 +23,7 @@
 		43E73FE9121B60C50039D8AB /* IUStatusItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E73FE8121B60C50039D8AB /* IUStatusItem.m */; };
 		43E74031121B64740039D8AB /* IUUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E74030121B64740039D8AB /* IUUpload.m */; };
 		43F4DABE14F1639000D3D02F /* libNon ARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F4DABD14F1639000D3D02F /* libNon ARC.a */; };
+		6366725E175725A1005A5CBE /* MenuBarIconClicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366725D175725A1005A5CBE /* MenuBarIconClicked.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +70,7 @@
 		43E74030121B64740039D8AB /* IUUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUUpload.m; sourceTree = "<group>"; };
 		43F4DA9514F15FCC00D3D02F /* Imgup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Imgup.entitlements; sourceTree = "<group>"; };
 		43F4DABD14F1639000D3D02F /* libNon ARC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libNon ARC.a"; path = "../../../Library/Developer/Xcode/DerivedData/Imgup-fubsaxaaxdgzlxbuvfedgbjsynzu/Build/Products/Debug/libNon ARC.a"; sourceTree = "<group>"; };
+		6366725D175725A1005A5CBE /* MenuBarIconClicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIconClicked.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				4336C971121C2F9D00090284 /* Growl Registration Ticket.growlRegDict */,
 				4336C937121C2C9400090284 /* Icon.icns */,
 				4336C922121C213800090284 /* MenuBarIcon.png */,
+				6366725D175725A1005A5CBE /* MenuBarIconClicked.png */,
 				43D84164121B4379007AB813 /* Imgup.xib */,
 				43D84148121B3F4B007AB813 /* Imgup-Info.plist */,
 				43D84152121B3F4B007AB813 /* Credits.rtf */,
@@ -219,6 +222,7 @@
 				4336C923121C213800090284 /* MenuBarIcon.png in Resources */,
 				4336C938121C2C9400090284 /* Icon.icns in Resources */,
 				433D86A1131AB1F800797D5A /* Window.xib in Resources */,
+				6366725E175725A1005A5CBE /* MenuBarIconClicked.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,7 +312,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Imgup;
-				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -340,7 +343,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Imgup;
-				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = app;
