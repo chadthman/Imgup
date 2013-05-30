@@ -81,15 +81,15 @@
     
     // register global hotkeys
     hotkeyCenter = [[DDHotKeyCenter alloc] init];
-    [hotkeyCenter registerHotKeyWithKeyCode:18
-                              modifierFlags:NSCommandKeyMask | NSShiftKeyMask
+    [hotkeyCenter registerHotKeyWithKeyCode:18 //changed to key 1
+                              modifierFlags:NSCommandKeyMask | NSShiftKeyMask //changed to just command and shift hitting the option key is not very fluent
                                      target:self
                                      action:@selector(uploadScreenshot:)
                                      object:nil];
     
     hotkeyCenter = [[DDHotKeyCenter alloc] init];
-    [hotkeyCenter registerHotKeyWithKeyCode:19
-                              modifierFlags:NSCommandKeyMask | NSShiftKeyMask
+    [hotkeyCenter registerHotKeyWithKeyCode:19 //changed to key 2
+                              modifierFlags:NSCommandKeyMask | NSShiftKeyMask //changed to just command and shift hitting the option key is not very fluent
                                      target:self
                                      action:@selector(uploadSnippedScreenshot:)
                                      object:nil];
@@ -129,27 +129,23 @@
 -(IBAction)onSave:(NSMenuItem*)sender
 {
     NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
-    
-    
     // track the image
-    
     if (keepFile)
     {
         keepFile = FALSE;
         [dict setValue:[NSNumber numberWithBool:NO] forKey:@"save"];
-        //[dict setValue:[NSNumber numberWithBool:keepFile] forKey:@"save"];
         [saveLocal setState:NSOffState];
     }
     else
     {
         keepFile = TRUE;
         [dict setValue:[NSNumber numberWithBool:YES] forKey:@"save"];
-        //[dict setValue:[NSNumber numberWithBool:keepFile] forKey:@"save"];
         [saveLocal setState:NSOnState];
     }
     [dict writeToFile:PREF_FILE atomically:YES];
 }
 
+//Opens the directory where all the pictures are saved. Useful for people who have the ~/Library folder hidden still.
 -(IBAction)onOpenDir:(NSMenuItem*)sender
 {
     if ([[NSFileManager defaultManager] fileExistsAtPath:LOCAL_COPY] == YES)  {
@@ -206,7 +202,7 @@
     [self startSnippitScreenRecord];
 }
 
-
+//Will call the applescripts i wrote to handle the screen recording though Quicktime.
 -(void)startFullScreenRecord
 {
     NSString* path = [[NSBundle mainBundle] pathForResource:@"StartScreenScript" ofType:@"scpt"];
@@ -242,6 +238,7 @@
     // upload the file
     if ([fm fileExistsAtPath:filename])
     {
+        //Saves the file localy if the option is set
         if (keepFile)
         {
             NSError *copyError = nil;
@@ -268,6 +265,7 @@
     }
 }
 
+//Gives the file a name based on the time.
 -(NSString*) getFileName
 {
     int i = 1;
@@ -301,7 +299,7 @@
     NSString *permName = [LOCAL_COPY stringByAppendingString:date];
     NSString *fileName = [permName stringByAppendingString:@".png"];
     
-    while ([fm fileExistsAtPath:fileName])
+    while ([fm fileExistsAtPath:fileName]) //Just incase if you spam the take screenshot button
     {
         fileName = [permName stringByAppendingString:[NSString stringWithFormat:@".%i.png", i++]];
     }

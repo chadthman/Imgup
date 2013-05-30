@@ -60,7 +60,8 @@
 -(void)drawRect:(NSRect)dirtyRect
 {
     [item drawStatusBarBackgroundInRect:[self frame] withHighlight:highlight];
-    
+  
+    //Added the icon switching
     if ([[uploads operations] count] == 0)
     {
         if (highlight==true) {

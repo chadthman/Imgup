@@ -24,7 +24,6 @@
     IBOutlet NSMenu* menu;
     IBOutlet NSMenuItem* recentUploads;
     IBOutlet NSMenuItem* saveLocal;
-    //IBOutlet NSMenuItem* onOpen;
     NSMutableArray* history;
     NSDictionary* preferencesArray;
     
@@ -33,11 +32,6 @@
     IUWindowController* allUploads;
     BOOL keepFile;
 }
-
-//@interface Controller : NSObject
-//{
-//    
-//}
 
 @property (nonatomic) NSDictionary* preferencesArray;
 @property (readonly) NSArray* history;
@@ -62,8 +56,6 @@
 -(void)uploadSnippedScreenshot:(NSEvent*)event;
 -(void)uploadScreenshotWithArguments:(NSArray*)arguments;
 
-//-(void)captureScreenStart:(NSEvent*)event;
-//-(void)captureScreenEnd:(NSEvent*)event;
 -(void)startFullScreenRecord;
 -(void)startSnippitScreenRecord;
 
