@@ -24,6 +24,8 @@
 		43E74031121B64740039D8AB /* IUUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E74030121B64740039D8AB /* IUUpload.m */; };
 		43F4DABE14F1639000D3D02F /* libNon ARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F4DABD14F1639000D3D02F /* libNon ARC.a */; };
 		6366725E175725A1005A5CBE /* MenuBarIconClicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366725D175725A1005A5CBE /* MenuBarIconClicked.png */; };
+		6366726117572641005A5CBE /* RecordSnippit.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 6366725F17572641005A5CBE /* RecordSnippit.scpt */; };
+		6366726217572641005A5CBE /* StartScreenScript.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 6366726017572641005A5CBE /* StartScreenScript.scpt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -71,6 +73,8 @@
 		43F4DA9514F15FCC00D3D02F /* Imgup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Imgup.entitlements; sourceTree = "<group>"; };
 		43F4DABD14F1639000D3D02F /* libNon ARC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libNon ARC.a"; path = "../../../Library/Developer/Xcode/DerivedData/Imgup-fubsaxaaxdgzlxbuvfedgbjsynzu/Build/Products/Debug/libNon ARC.a"; sourceTree = "<group>"; };
 		6366725D175725A1005A5CBE /* MenuBarIconClicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIconClicked.png; sourceTree = "<group>"; };
+		6366725F17572641005A5CBE /* RecordSnippit.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = RecordSnippit.scpt; sourceTree = "<group>"; };
+		6366726017572641005A5CBE /* StartScreenScript.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = StartScreenScript.scpt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,8 @@
 		43D8413D121B3F4B007AB813 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6366725F17572641005A5CBE /* RecordSnippit.scpt */,
+				6366726017572641005A5CBE /* StartScreenScript.scpt */,
 				43F4DA9514F15FCC00D3D02F /* Imgup.entitlements */,
 				43DD080D131B34A6000A8BE6 /* dsa_pub.pem */,
 				4336C971121C2F9D00090284 /* Growl Registration Ticket.growlRegDict */,
@@ -223,6 +229,8 @@
 				4336C938121C2C9400090284 /* Icon.icns in Resources */,
 				433D86A1131AB1F800797D5A /* Window.xib in Resources */,
 				6366725E175725A1005A5CBE /* MenuBarIconClicked.png in Resources */,
+				6366726117572641005A5CBE /* RecordSnippit.scpt in Resources */,
+				6366726217572641005A5CBE /* StartScreenScript.scpt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
