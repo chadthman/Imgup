@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>155C49F9-6DB3-4E6A-BF15-4DECECF6276E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Imgup</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5DD058F2B3DEBA17B543E51E262C2FC5852FBEB3</key>
+		<string>ssh://github.com/chadthman/Imgup.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Imgup.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5DD058F2B3DEBA17B543E51E262C2FC5852FBEB3</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/chadthman/Imgup.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5DD058F2B3DEBA17B543E51E262C2FC5852FBEB3</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5DD058F2B3DEBA17B543E51E262C2FC5852FBEB3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Imgup</string>
+		</dict>
+	</array>
+</dict>
+</plist>

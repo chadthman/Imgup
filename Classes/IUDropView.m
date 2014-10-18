@@ -61,17 +61,26 @@
 {
     [item drawStatusBarBackgroundInRect:[self frame] withHighlight:highlight];
   
+    //to detect dark mode on Yosemite
+    NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
+    
     //Added the icon switching
     if ([[uploads operations] count] == 0)
     {
-        if (highlight==true) {
+        if (osxMode == nil) { //if nil then its not in dark mode
+            if (highlight==true) {
+                [[NSColor colorWithPatternImage:[NSImage imageNamed:@"MenuBarIconClicked"]] set];
+                [NSBezierPath fillRect:[self frame]];
+            }
+            else {
+                [[NSColor colorWithPatternImage:[NSImage imageNamed:@"MenuBarIcon"]] set];
+                [NSBezierPath fillRect:[self frame]];
+            }
+        } else {
             [[NSColor colorWithPatternImage:[NSImage imageNamed:@"MenuBarIconClicked"]] set];
             [NSBezierPath fillRect:[self frame]];
         }
-        else {
-            [[NSColor colorWithPatternImage:[NSImage imageNamed:@"MenuBarIcon"]] set];
-            [NSBezierPath fillRect:[self frame]];
-        }
+        
     }
     else
     {
@@ -82,19 +91,33 @@
             NSRect rect = NSMakeRect((frame.size.width / 3) * i,
                                      (frame.size.height - 2 *
                                       BlockSize - 2 * Padding) * sin(theta + 1 * i)
-                                        + BlockSize + Padding - 1,
+                                     + BlockSize + Padding - 1,
                                      BlockSize, BlockSize);
-            
-            [[NSColor whiteColor] set];
-            [[NSBezierPath bezierPathWithRoundedRect:rect
-                                             xRadius:BlockRadius
-                                             yRadius:BlockRadius] fill];
-            
-            [[NSColor blackColor] set];
-            rect.origin.y += 1;
-            [[NSBezierPath bezierPathWithRoundedRect:rect
-                                             xRadius:BlockRadius
-                                             yRadius:BlockRadius] fill];
+
+            if (osxMode == nil) { //if nil then its not in dark mode
+                [[NSColor whiteColor] set];
+                [[NSBezierPath bezierPathWithRoundedRect:rect
+                                                 xRadius:BlockRadius
+                                                 yRadius:BlockRadius] fill];
+                
+                [[NSColor blackColor] set];
+                rect.origin.y += 1;
+                [[NSBezierPath bezierPathWithRoundedRect:rect
+                                                 xRadius:BlockRadius
+                                                 yRadius:BlockRadius] fill];
+
+            } else {
+                [[NSColor blackColor] set];
+                [[NSBezierPath bezierPathWithRoundedRect:rect
+                                                 xRadius:BlockRadius
+                                                 yRadius:BlockRadius] fill];
+                
+                [[NSColor whiteColor] set];
+                rect.origin.y += 1;
+                [[NSBezierPath bezierPathWithRoundedRect:rect
+                                                 xRadius:BlockRadius
+                                                 yRadius:BlockRadius] fill];
+            }
         }
     }
 }
