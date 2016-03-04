@@ -40,12 +40,12 @@
 
 -(NSURL *)uploadURL
 {
-    return [NSURL URLWithString:@"http://api.imgur.com/2/upload.xml"];
+    return [NSURL URLWithString:@"https://api.imgur.com/2/upload.xml"];
 }
 
 -(NSURL *)redditURL:(NSString *)url
 {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"http://www.reddit.com/submit?url=%@", url]];
+    return [NSURL URLWithString:[NSString stringWithFormat:@"https://www.reddit.com/submit?url=%@", url]];
 }
 
 -(void)main
