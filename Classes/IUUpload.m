@@ -16,7 +16,7 @@
 #import "IUUpload.h"
 #import "NSDataBase64.h"
 
-#define KEY @"6c02d7bed348d1e3e31bdd26df79abf2"
+#define CLIENT_ID @"Client-ID 2cca2597409f0ff"
 
 @interface IUUpload ()
 @property (readonly) NSURL *uploadURL;
@@ -40,7 +40,7 @@
 
 -(NSURL *)uploadURL
 {
-    return [NSURL URLWithString:@"https://api.imgur.com/2/upload.xml"];
+    return [NSURL URLWithString:@"https://api.imgur.com/3/upload.xml"];
 }
 
 -(NSURL *)redditURL:(NSString *)url
@@ -61,8 +61,9 @@
                                                                       kCFStringEncodingUTF8);
         
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[self uploadURL]];
-        NSString* httpBody = [NSString stringWithFormat:@"image=%@&key=%@", (__bridge NSString*)escaped, KEY];
+        NSString* httpBody = [NSString stringWithFormat:@"image=%@", (__bridge NSString*)escaped];
         [request setHTTPMethod:@"POST"];
+        [request addValue:CLIENT_ID forHTTPHeaderField:@"Authorization"];
         [request setHTTPBody:[httpBody dataUsingEncoding:NSUTF8StringEncoding]];
         CFRelease(escaped);
         
@@ -94,7 +95,7 @@
             continue;
         }
         
-        NSArray* nodes = [doc nodesForXPath:@"/upload/links/original" error:&error];
+        NSArray* nodes = [doc nodesForXPath:@"/data/link" error:&error];
         if (error)
         {
             [NSApp presentError:error];
